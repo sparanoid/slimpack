@@ -9,15 +9,19 @@ Stable tag: 1.0.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Jetpack Slim — Use Jetpack without internet connection (no debug mode required). Super-fast performance without contracting to Jetpack server.
-
-It provides better performance than original Jetpack. All features that require a WordPress.com account have been removed. You don't need to connect to WordPress.com to use this plugin. If your site got slow response time (TTFB) after activating Jetpack, you should definitely try out this plugin.
+Jetpack Slim — A lite version of Jetpack without internet connection (no debug mode required). Super-fast performance without contracting to Jetpack server.
 
 == Description ==
 
-Jetpack Slim — Use Jetpack without internet connection (no debug mode required). Super-fast performance without contracting to Jetpack server.
+Jetpack Slim — A lite version of Jetpack without internet connection (no debug mode required). Super-fast performance without contracting to Jetpack server.
+
+It provides better performance than original Jetpack. All features that require a WordPress.com account have been removed. You don't need to connect to WordPress.com to use this plugin. If your site got slow response time (TTFB) after activating Jetpack, you should definitely try out this plugin.
 
 More information please visit my [site](http://sparanoid.com/work/jetpack-slim/).
+
+View source code and submit issue at [GitHub](https://github.com/sparanoid/jetpack-slim)
+
+Note: Please do not submit issue unless the issue cannot be reproduced using the original Jetpack module.
 
 **Features**
 
@@ -71,7 +75,7 @@ The following modules are working-in-progress, I'll add them later.
 The following modules **should** be working in Slim version but…
 
 * Custom Content Types: It requires too many Jetpack dependencies.
-* Tiled Galleries: It requires Photon to retrieve remote generated images.
+* Tiled Galleries: It requires Photon to retrieve images generated from WordPress.com proxy.
 
 **Unsupported Modules**
 
