@@ -1,0 +1,160 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Corner Bracket Lover v1.1.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: 2012-12-17 09:45:24+0000\n"
+"Last-Translator: Tunghsiao Liu <info@sparanoid.com>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=1;\n"
+"X-Poedit-Language: Chinese\n"
+"X-Poedit-Country: PEOPLE'S REPUBLIC OF CHINA\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;\n"
+"X-Poedit-Basepath: \n"
+"X-Poedit-Bookmarks: \n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Textdomain-Support: yes"
+
+#. translators: plugin header field 'Name'
+#: corner-bracket-lover.php:0
+#: corner-bracket-lover.php:104
+#: corner-bracket-lover.php:105
+#@ corner-bracket-lover
+msgid "Corner Bracket Lover"
+msgstr "「直角引号」爱好者"
+
+#. translators: plugin header field 'PluginURI'
+#: corner-bracket-lover.php:0
+#@ corner-bracket-lover
+msgid "http://sparanoid.com/work/corner-bracket-lover/"
+msgstr "http://sparanoid.com/work/corner-bracket-lover/"
+
+#. translators: plugin header field 'Description'
+#: corner-bracket-lover.php:0
+#: corner-bracket-lover.php:117
+#@ corner-bracket-lover
+msgid "Corner Bracket Lover converts all curly quotation marks in your posts to traditional corner brackets."
+msgstr "「直角引号」爱好者是一个将所有弯引号转换成直角引号的插件"
+
+#. translators: plugin header field 'Author'
+#: corner-bracket-lover.php:0
+#@ corner-bracket-lover
+msgid "Tunghsiao Liu"
+msgstr "Tunghsiao Liu"
+
+#. translators: plugin header field 'AuthorURI'
+#: corner-bracket-lover.php:0
+#@ corner-bracket-lover
+msgid "http://sparanoid.com/"
+msgstr "http://sparanoid.com/"
+
+#. translators: plugin header field 'Version'
+#: corner-bracket-lover.php:0
+#@ corner-bracket-lover
+msgid "1.1.0"
+msgstr "1.1.0"
+
+#: corner-bracket-lover.php:115
+#@ corner-bracket-lover
+msgid "Corner Bracket Lover Options"
+msgstr "「直角引号」爱好者选项"
+
+#: corner-bracket-lover.php:124
+#@ corner-bracket-lover
+msgid "Apply corner bracket filter on"
+msgstr "应用直角引号到"
+
+#: corner-bracket-lover.php:129
+#@ corner-bracket-lover
+msgid "Post Content"
+msgstr "文章正文"
+
+#: corner-bracket-lover.php:134
+#@ corner-bracket-lover
+msgid "Post Excerpt"
+msgstr "文章摘要"
+
+#: corner-bracket-lover.php:139
+#@ corner-bracket-lover
+msgid "Post Titles"
+msgstr "文章标题"
+
+#: corner-bracket-lover.php:144
+#@ corner-bracket-lover
+msgid "Comments and its author names"
+msgstr "评论及评论作者姓名"
+
+#: corner-bracket-lover.php:149
+#@ corner-bracket-lover
+msgid "Blog Info"
+msgstr "网址描述"
+
+#: corner-bracket-lover.php:154
+#@ corner-bracket-lover
+msgid "Category Description"
+msgstr "分类描述"
+
+#: corner-bracket-lover.php:159
+#@ corner-bracket-lover
+msgid "Tags"
+msgstr "标签"
+
+#: corner-bracket-lover.php:164
+#@ corner-bracket-lover
+msgid "Tag Cloud"
+msgstr "标签云"
+
+#: corner-bracket-lover.php:170
+#@ corner-bracket-lover
+msgid "Database Options"
+msgstr "数据库选项"
+
+#: corner-bracket-lover.php:174
+#@ corner-bracket-lover
+msgid "Restore defaults upon plugin deactivation or reactivation."
+msgstr "停用或重新激活时还原插件默认设置"
+
+#: corner-bracket-lover.php:176
+#@ corner-bracket-lover
+msgid "Only check this if you want to reset plugin settings when reactivation"
+msgstr "当你想要重置插件的设置时，请勾选此选项"
+
+#: corner-bracket-lover.php:181
+#@ default
+msgid "Save Changes"
+msgstr "保存更改"
+
+#: corner-bracket-lover.php:184
+#@ corner-bracket-lover
+msgid "Love this plugin? Please consider"
+msgstr "喜欢这个插件？请考虑"
+
+#: corner-bracket-lover.php:182
+#@ corner-bracket-lover
+msgid "Follow on Twitter"
+msgstr "在 Twitter 上关注我"
+
+#: corner-bracket-lover.php:183
+#@ corner-bracket-lover
+msgid "Visit My Website"
+msgstr "访问我的网站"
+
+#: corner-bracket-lover.php:256
+#@ default
+msgid "Settings"
+msgstr "设置"
+
+#: corner-bracket-lover.php:184
+#@ corner-bracket-lover
+msgid "buying me a cup of coffee"
+msgstr "为我买一杯咖啡"
+
+#: corner-bracket-lover.php:184
+#@ corner-bracket-lover
+msgid "!"
+msgstr "！"
+
