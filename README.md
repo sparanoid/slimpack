@@ -1,6 +1,6 @@
 # Jetpack Slim
 
-Please view [plugin page at WordPress.org](https://wordpress.org/plugins/jetpack/) for more information.
+Please view [plugin page at WordPress.org](https://wordpress.org/plugins/jetpack-slim/) for more information.
 
 Please do not submit issue unless the issue cannot be reproduced using the original Jetpack module.
 
