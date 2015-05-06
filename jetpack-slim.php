@@ -134,7 +134,7 @@ function jtpkslm_add_options_page() {
 	add_options_page(
 		__( 'Jetpack Slim', 'jetpack-slim' ),
 		__( 'Jetpack Slim', 'jetpack-slim' ),
-		'manage_options', __FILE__, 'jtpkslm_render_form'
+		'manage_options', 'jetpack-slim', 'jtpkslm_render_form'
 	);
 }
 
