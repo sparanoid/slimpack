@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Jetpack Slim ver.
+ * Slimpack ver.
  */
 
 class Jetpack {

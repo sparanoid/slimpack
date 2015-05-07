@@ -1,13 +1,13 @@
 <?php
 /*
-Plugin Name: Jetpack Slim
-Plugin URI: http://sparanoid.com/work/jetpack-slim/
-Description: Jetpack Slim — Use Jetpack without internet connection (no debug mode required). Super-fast performance without contracting to Jetpack server.
+Plugin Name: Slimpack
+Plugin URI: http://sparanoid.com/work/slimpack/
+Description: Slimpack — Lightweight Jetpack. Super-fast performance without modules that requires contracting WordPress.com.
 Version: 1.0.0
 Author: Tunghsiao Liu
 Author URI: http://sparanoid.com/
 Author Email: t@sparanoid.com
-Text Domain: jetpack-slim
+Text Domain: slimpack
 Domain Path: /languages/
 Network: false
 License: GPLv2 or later
@@ -30,8 +30,8 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 */
 
-define( 'JETPACK_SLIM__BASE',					'jetpack-slim/' );
-define( 'JETPACK__PLUGIN_DIR',				 plugin_dir_path( __FILE__ ) . JETPACK_SLIM__BASE );
+define( 'SLIMPACK__BASE',							'slimpack/' );
+define( 'JETPACK__PLUGIN_DIR',				plugin_dir_path( __FILE__ ) . SLIMPACK__BASE );
 define( 'JETPACK__PLUGIN_FILE',				__FILE__ );
 
 if ( !class_exists( 'Jetpack' ) ) {
@@ -50,43 +50,43 @@ if ( !function_exists( 'jetpack_require_lib' ) ) {
 	require_once( JETPACK__PLUGIN_DIR . 'require-lib.php' );
 }
 
-register_activation_hook( __FILE__, 'jtpkslm_add_defaults' );
-register_uninstall_hook( __FILE__, 'jtpkslm_delete_plugin_options' );
-add_action( 'init', 'jtpkslm_i18n_init' );
-add_action( 'admin_init', 'jtpkslm_init' );
-add_action( 'admin_menu', 'jtpkslm_add_options_page' );
-add_action( 'plugins_loaded', 'jtpkslm_conditions' );
-add_filter( 'plugin_action_links', 'jtpkslm_plugin_action_links', 10, 2 );
+register_activation_hook( __FILE__, 'slimpack_add_defaults' );
+register_uninstall_hook( __FILE__, 'slimpack_delete_plugin_options' );
+add_action( 'init', 'slimpack_i18n_init' );
+add_action( 'admin_init', 'slimpack_init' );
+add_action( 'admin_menu', 'slimpack_add_options_page' );
+add_action( 'plugins_loaded', 'slimpack_conditions' );
+add_filter( 'plugin_action_links', 'slimpack_plugin_action_links', 10, 2 );
 
-// Jetpack Slim
+// Slimpack
 add_action( 'init', array( 'Jetpack', 'init' ) );
 add_action( 'plugins_loaded', array( 'Jetpack', 'load_modules' ), 100 );
 
-add_action( 'activated_plugin','jtpkslm_save_error' );
-function jtpkslm_save_error(){
+add_action( 'activated_plugin','slimpack_save_error' );
+function slimpack_save_error(){
 		update_option( 'sparanoid_plugin_error',	ob_get_contents() );
 }
 
-add_action( 'shutdown','jtpkslm_show_plugin_error' );
-function jtpkslm_show_plugin_error(){
+add_action( 'shutdown','slimpack_show_plugin_error' );
+function slimpack_show_plugin_error(){
 		echo get_option('plugin_error');
 }
 
 /**
  * Admin Options
  *
- * @since Jetpack Slim 1.1.0
+ * @since Slimpack 1.1.0
  */
 
 // Delete plugin created table when plugin deleted
-function jtpkslm_delete_plugin_options() {
-	delete_option('jtpkslm_options');
+function slimpack_delete_plugin_options() {
+	delete_option('slimpack_options');
 }
 
 // Default option settings
-function jtpkslm_add_defaults() {
+function slimpack_add_defaults() {
 
-	$tmp = get_option('jtpkslm_options');
+	$tmp = get_option('slimpack_options');
 
 	if( ( (isset($tmp['chk_default_options_db']) && $tmp['G']=='1')) || (!is_array($tmp)) ) {
 		$arr = array(
@@ -103,111 +103,111 @@ function jtpkslm_add_defaults() {
 			"jp_widgets" => "1",
 			"radio_strict_filtering" => "strict_on"
 		);
-		update_option('jtpkslm_options', $arr);
+		update_option('slimpack_options', $arr);
 	}
 }
 
 // Load the plugin text domain for translation
-function jtpkslm_i18n_init() {
-	load_plugin_textdomain( 'jetpack-slim', false, dirname( plugin_basename( JETPACK__PLUGIN_FILE ) ) . '/languages/' );
+function slimpack_i18n_init() {
+	load_plugin_textdomain( 'slimpack', false, dirname( plugin_basename( JETPACK__PLUGIN_FILE ) ) . '/languages/' );
 }
 
 // Initialized options to white list our options
-function jtpkslm_init() {
+function slimpack_init() {
 
 	// Checks radio buttons have a valid choice (ie. no section is blank)
 	// Primarily to check newly added options have correct initial values
-	$tmp = get_option('jtpkslm_options');
+	$tmp = get_option('slimpack_options');
 
 	// Check strict filtering option has a starting value
 	if(!$tmp['radio_strict_filtering']) {
 		$tmp["radio_strict_filtering"] = "strict_off";
-		update_option('jtpkslm_options', $tmp);
+		update_option('slimpack_options', $tmp);
 	}
 
 	// Register settings
-	register_setting( 'jtpkslm_plugin_options', 'jtpkslm_options' );
+	register_setting( 'slimpack_plugin_options', 'slimpack_options' );
 }
 
 // Menu page
-function jtpkslm_add_options_page() {
+function slimpack_add_options_page() {
 	add_options_page(
-		__( 'Jetpack Slim', 'jetpack-slim' ),
-		__( 'Jetpack Slim', 'jetpack-slim' ),
-		'manage_options', 'jetpack-slim', 'jtpkslm_render_form'
+		__( 'Slimpack', 'slimpack' ),
+		__( 'Slimpack', 'slimpack' ),
+		'manage_options', 'slimpack', 'slimpack_render_form'
 	);
 }
 
 // Menu page content
-function jtpkslm_render_form() {
+function slimpack_render_form() {
 	?>
 	<div class="wrap">
 		<div class="icon32" id="icon-options-general"><br></div>
-		<h2><?php _e( 'Jetpack Slim Options', 'jetpack-slim' ); ?></h2>
-		<!-- <h3>Jetpack Slim Options</h3> -->
-		<p><?php _e( 'Jetpack Slim — Use Jetpack without internet connection (no debug mode required). Super-fast performance without contracting to Jetpack server.', 'jetpack-slim' ); ?></p>
+		<h2><?php _e( 'Slimpack Options', 'slimpack' ); ?></h2>
+		<!-- <h3>Slimpack Options</h3> -->
+		<p><?php _e( 'Slimpack — Lightweight Jetpack. Super-fast performance without modules that requires contracting WordPress.com.', 'slimpack' ); ?></p>
 
 		<form method="post" action="options.php">
-			<?php settings_fields('jtpkslm_plugin_options'); ?>
-			<?php $options = get_option('jtpkslm_options'); ?>
+			<?php settings_fields('slimpack_plugin_options'); ?>
+			<?php $options = get_option('slimpack_options'); ?>
 			<table class="form-table">
 				<tr valign="top">
-					<th scope="row"><?php _e( 'Active Jetpack Modules', 'jetpack-slim' ); ?></th>
+					<th scope="row"><?php _e( 'Active Jetpack Modules', 'slimpack' ); ?></th>
 					<td>
 						<fieldset>
 							<label>
-								<input name="jtpkslm_options[jp_carousel]" type="checkbox" value="1" <?php if (isset($options['jp_carousel'])) { checked('1', $options['jp_carousel']); } ?>>
+								<input name="slimpack_options[jp_carousel]" type="checkbox" value="1" <?php if (isset($options['jp_carousel'])) { checked('1', $options['jp_carousel']); } ?>>
 								<?php _e( 'Carousel', 'jetpack' ); ?>
 							</label><br>
 
 							<label>
-								<input name="jtpkslm_options[jp_contact_form]" type="checkbox" value="1" <?php if (isset($options['jp_contact_form'])) { checked('1', $options['jp_contact_form']); } ?>>
+								<input name="slimpack_options[jp_contact_form]" type="checkbox" value="1" <?php if (isset($options['jp_contact_form'])) { checked('1', $options['jp_contact_form']); } ?>>
 								<?php _e( 'Contact Form', 'jetpack' ); ?>
 							</label><br>
 
 							<label>
-								<input name="jtpkslm_options[jp_custom_css]" type="checkbox" value="1" <?php if (isset($options['jp_custom_css'])) { checked('1', $options['jp_custom_css']); } ?>>
+								<input name="slimpack_options[jp_custom_css]" type="checkbox" value="1" <?php if (isset($options['jp_custom_css'])) { checked('1', $options['jp_custom_css']); } ?>>
 								<?php _e( 'Custom CSS', 'jetpack' ); ?>
 							</label><br>
 
 							<label>
-								<input name="jtpkslm_options[jp_infinite_scroll]" type="checkbox" value="1" <?php if (isset($options['jp_infinite_scroll'])) { checked('1', $options['jp_infinite_scroll']); } ?>>
-								<?php _e( 'Infinite Scroll', 'jetpack-slim' ); ?>
+								<input name="slimpack_options[jp_infinite_scroll]" type="checkbox" value="1" <?php if (isset($options['jp_infinite_scroll'])) { checked('1', $options['jp_infinite_scroll']); } ?>>
+								<?php _e( 'Infinite Scroll', 'slimpack' ); ?>
 							</label><br>
 
 							<label>
-								<input name="jtpkslm_options[jp_latex]" type="checkbox" value="1" <?php if (isset($options['jp_latex'])) { checked('1', $options['jp_latex']); } ?>>
-								<?php _e( 'Beautiful Math', 'jetpack-slim' ); ?>
+								<input name="slimpack_options[jp_latex]" type="checkbox" value="1" <?php if (isset($options['jp_latex'])) { checked('1', $options['jp_latex']); } ?>>
+								<?php _e( 'Beautiful Math', 'slimpack' ); ?>
 							</label><br>
 
 							<label>
-								<input name="jtpkslm_options[jp_markdown]" type="checkbox" value="1" <?php if (isset($options['jp_markdown'])) { checked('1', $options['jp_markdown']); } ?>>
+								<input name="slimpack_options[jp_markdown]" type="checkbox" value="1" <?php if (isset($options['jp_markdown'])) { checked('1', $options['jp_markdown']); } ?>>
 								<?php _e( 'Markdown', 'jetpack' ); ?>
 							</label><br>
 
 							<label>
-								<input name="jtpkslm_options[jp_shortcodes]" type="checkbox" value="1" <?php if (isset($options['jp_shortcodes'])) { checked('1', $options['jp_shortcodes']); } ?>>
+								<input name="slimpack_options[jp_shortcodes]" type="checkbox" value="1" <?php if (isset($options['jp_shortcodes'])) { checked('1', $options['jp_shortcodes']); } ?>>
 								<?php _e( 'Shortcode Embeds', 'jetpack' ); ?>
 							</label><br>
 
 							<label>
-								<input name="jtpkslm_options[jp_site_icon]" type="checkbox" value="1" <?php if (isset($options['jp_site_icon'])) { checked('1', $options['jp_site_icon']); } ?>>
+								<input name="slimpack_options[jp_site_icon]" type="checkbox" value="1" <?php if (isset($options['jp_site_icon'])) { checked('1', $options['jp_site_icon']); } ?>>
 								<?php _e( 'Site Icon', 'jetpack' ); ?>
 							</label><br>
 
 							<label>
-								<input name="jtpkslm_options[jp_verification_tools]" type="checkbox" value="1" <?php if (isset($options['jp_verification_tools'])) { checked('1', $options['jp_verification_tools']); } ?>>
-								<?php _e( 'Site Verification', 'jetpack-slim' ); ?>
+								<input name="slimpack_options[jp_verification_tools]" type="checkbox" value="1" <?php if (isset($options['jp_verification_tools'])) { checked('1', $options['jp_verification_tools']); } ?>>
+								<?php _e( 'Site Verification', 'slimpack' ); ?>
 							</label><br>
 
 							<label>
-								<input name="jtpkslm_options[jp_widget_visibility]" type="checkbox" value="1" <?php if (isset($options['jp_widget_visibility'])) { checked('1', $options['jp_widget_visibility']); } ?>>
-								<?php _e( 'Widget Visibility', 'jetpack-slim' ); ?>
+								<input name="slimpack_options[jp_widget_visibility]" type="checkbox" value="1" <?php if (isset($options['jp_widget_visibility'])) { checked('1', $options['jp_widget_visibility']); } ?>>
+								<?php _e( 'Widget Visibility', 'slimpack' ); ?>
 							</label><br>
 
 							<label>
-								<input name="jtpkslm_options[jp_widgets]" type="checkbox" value="1" <?php if (isset($options['jp_widgets'])) { checked('1', $options['jp_widgets']); } ?>>
-								<?php _e( 'Widgets', 'jetpack-slim' ); ?>
+								<input name="slimpack_options[jp_widgets]" type="checkbox" value="1" <?php if (isset($options['jp_widgets'])) { checked('1', $options['jp_widgets']); } ?>>
+								<?php _e( 'Widgets', 'slimpack' ); ?>
 							</label><br>
 						</fieldset>
 					</td>
@@ -217,11 +217,11 @@ function jtpkslm_render_form() {
 				<input type="submit" class="button-primary" value="<?php _e('Save Changes') ?>">
 			</p>
 			<hr>
-			<p><?php _e( 'Love this plugin? Please consider', 'jetpack-slim' ); ?> <a href="http://sparanoid.com/donate/"><?php _e( 'buying me a cup of coffee!', 'jetpack-slim' ); ?></a></p>
+			<p><?php _e( 'Love this plugin? Please consider', 'slimpack' ); ?> <a href="http://sparanoid.com/donate/"><?php _e( 'buying me a cup of coffee!', 'slimpack' ); ?></a></p>
 			<p>
-				<input class="button" type="button" value="<?php _e( 'Follow on Twitter', 'jetpack-slim' ); ?>" onClick="window.open('http://twitter.com/tunghsiao')">
-				<input class="button" type="button" value="<?php _e( 'Visit My Website', 'jetpack-slim' ); ?>" onClick="window.open('http://sparanoid.com/')">
-				<input class="button" type="button" value="<?php _e( 'View plugin at WordPress.org', 'jetpack-slim' ); ?>" onClick="window.open('https://wordpress.org/plugins/jetpack-slim/')">
+				<input class="button" type="button" value="<?php _e( 'Follow on Twitter', 'slimpack' ); ?>" onClick="window.open('http://twitter.com/tunghsiao')">
+				<input class="button" type="button" value="<?php _e( 'Visit My Website', 'slimpack' ); ?>" onClick="window.open('http://sparanoid.com/')">
+				<input class="button" type="button" value="<?php _e( 'View plugin at WordPress.org', 'slimpack' ); ?>" onClick="window.open('https://wordpress.org/plugins/slimpack/')">
 			</p>
 		</form>
 	</div>
@@ -231,12 +231,12 @@ function jtpkslm_render_form() {
 /**
  * Plugin Functions
  *
- * @since Jetpack Slim 1.1.0
+ * @since Slimpack 1.1.0
  */
 
-function jtpkslm_conditions() {
+function slimpack_conditions() {
 
-	$tmp = get_option('jtpkslm_options');
+	$tmp = get_option('slimpack_options');
 
 	if (isset($tmp['jp_carousel'])) {
 		if($tmp['jp_carousel']=='1'){
@@ -306,10 +306,10 @@ function jtpkslm_conditions() {
 }
 
 // Add a 'Settings' link on Plugins page
-function jtpkslm_plugin_action_links( $links, $file ) {
+function slimpack_plugin_action_links( $links, $file ) {
 
 	if ( $file == plugin_basename( __FILE__ ) ) {
-		$posk_links = '<a href="'.get_admin_url().'options-general.php?page=jetpack-slim/jetpack-slim.php">'.__('Settings').'</a>';
+		$posk_links = '<a href="'.get_admin_url().'options-general.php?page=slimpack">'.__('Settings').'</a>';
 		// Make sure the 'Settings' link at first
 		array_unshift( $links, $posk_links );
 	}

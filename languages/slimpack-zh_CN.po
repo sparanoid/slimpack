@@ -1,0 +1,161 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Slimpack v1.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: 2015-05-07 01:29:12+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=1;\n"
+"X-Generator: GlotPress/0.1\n"
+"X-Poedit-Language: \n"
+"X-Poedit-Country: \n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;\n"
+"X-Poedit-Basepath: \n"
+"X-Poedit-Bookmarks: \n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Textdomain-Support: yes"
+
+#: slimpack.php:155
+#@ slimpack
+msgid "Active Jetpack Modules"
+msgstr "激活 Jetpack 模块"
+
+#: slimpack.php:180
+#@ slimpack
+msgid "Beautiful Math"
+msgstr "优雅数学（LaTeX）"
+
+#: slimpack.php:222
+#@ slimpack
+msgid "Follow on Twitter"
+msgstr "Twitter 上关注我"
+
+#: slimpack.php:175
+#@ slimpack
+msgid "Infinite Scroll"
+msgstr "无限滚动"
+
+#: slimpack.php:220
+#@ slimpack
+msgid "Love this plugin? Please consider"
+msgstr "喜欢这个插件？请考虑"
+
+#: slimpack.php:200
+#@ slimpack
+msgid "Site Verification"
+msgstr "站点验证"
+
+#: slimpack.php:224
+#@ slimpack
+msgid "View plugin at WordPress.org"
+msgstr "在 WordPress.org 上查看插件"
+
+#: slimpack.php:223
+#@ slimpack
+msgid "Visit My Website"
+msgstr "访问我的网站"
+
+#: slimpack.php:205
+#@ slimpack
+msgid "Widget Visibility"
+msgstr "小挂件可见性"
+
+#: slimpack.php:210
+#@ slimpack
+msgid "Widgets"
+msgstr "小挂件"
+
+#: slimpack.php:220
+#@ slimpack
+msgid "buying me a cup of coffee!"
+msgstr "为我买一杯咖啡！"
+
+#. translators: plugin header field 'Name'
+#: slimpack.php:0
+#: slimpack.php:135
+#: slimpack.php:136
+#@ slimpack
+msgid "Slimpack"
+msgstr "Slimpack"
+
+#. translators: plugin header field 'PluginURI'
+#: slimpack.php:0
+#@ slimpack
+msgid "http://sparanoid.com/work/slimpack/"
+msgstr "http://sparanoid.com/work/slimpack/"
+
+#. translators: plugin header field 'Description'
+#: slimpack.php:0
+#: slimpack.php:148
+#@ slimpack
+msgid "Slimpack — Lightweight Jetpack. Super-fast performance without modules that requires contracting WordPress.com."
+msgstr "Slimpack — 轻量级 Jetpack。超快速性能，移除了所有需要与 WordPress.com 通信的模块"
+
+#. translators: plugin header field 'Author'
+#: slimpack.php:0
+#@ slimpack
+msgid "Tunghsiao Liu"
+msgstr "Tunghsiao Liu"
+
+#. translators: plugin header field 'AuthorURI'
+#: slimpack.php:0
+#@ slimpack
+msgid "http://sparanoid.com/"
+msgstr "http://sparanoid.com/"
+
+#. translators: plugin header field 'Version'
+#: slimpack.php:0
+#@ slimpack
+msgid "1.0.0"
+msgstr "1.0.0"
+
+#: slimpack.php:146
+#@ slimpack
+msgid "Slimpack Options"
+msgstr "Slimpack 选项"
+
+#: slimpack.php:160
+#@ jetpack
+msgid "Carousel"
+msgstr ""
+
+#: slimpack.php:165
+#@ jetpack
+msgid "Contact Form"
+msgstr ""
+
+#: slimpack.php:170
+#@ jetpack
+msgid "Custom CSS"
+msgstr ""
+
+#: slimpack.php:185
+#@ jetpack
+msgid "Markdown"
+msgstr ""
+
+#: slimpack.php:190
+#@ jetpack
+msgid "Shortcode Embeds"
+msgstr ""
+
+#: slimpack.php:195
+#@ jetpack
+msgid "Site Icon"
+msgstr ""
+
+#: slimpack.php:217
+#@ default
+msgid "Save Changes"
+msgstr ""
+
+#: slimpack.php:312
+#@ default
+msgid "Settings"
+msgstr ""
+

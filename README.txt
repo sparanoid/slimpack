@@ -1,4 +1,4 @@
-=== Jetpack Slim ===
+=== Slimpack ===
 
 Contributors: Sparanoid
 Donate link: http://sparanoid.com/donate/
@@ -9,17 +9,17 @@ Stable tag: 1.0.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Jetpack Slim — A lite version of Jetpack without internet connection (no debug mode required). Super-fast performance without contracting to Jetpack server.
+Slimpack — Lightweight Jetpack. Super-fast performance without modules that requires contracting WordPress.com.
 
 == Description ==
 
-Jetpack Slim — A lite version of Jetpack without internet connection (no debug mode required). Super-fast performance without contracting to Jetpack server.
+Slimpack — Lightweight Jetpack. Super-fast performance without modules that requires contracting WordPress.com.
 
-It provides better performance than original Jetpack. All features that require a WordPress.com account have been removed. You don't need to connect to WordPress.com to use this plugin. If your site got slow response time (TTFB) after activating Jetpack, you should definitely try out this plugin.
+It provides better performance than original Jetpack. All features that require a WordPress.com account or need contracting / syncing back to WordPress.com servers have been removed. You don't need to connect to WordPress.com to use this plugin. If your site got slow response time (TTFB) after activating the original Jetpack, you should definitely try out this plugin.
 
-More information please visit my [site](http://sparanoid.com/work/jetpack-slim/).
+More information please visit my [site](http://sparanoid.com/work/slimpack/).
 
-View source code and submit issue at [GitHub](https://github.com/sparanoid/jetpack-slim)
+View source code and submit issue at [GitHub](https://github.com/sparanoid/slimpack)
 
 Note: Please do not submit issue unless the issue cannot be reproduced using the original Jetpack module.
 
@@ -31,7 +31,7 @@ Note: Please do not submit issue unless the issue cannot be reproduced using the
 
 **Available Modules**
 
-The following modules are available in Jetpack Slim:
+The following modules are available in Slimpack:
 
 * Carousels
 * Contact Form
@@ -54,7 +54,7 @@ Additional note:
 
 **Under-the-hood Features**
 
-The following hidden modules are also available in Jetpack Slim:
+The following hidden modules are also available in Slimpack:
 
 * Holiday Snow module
 * Feature Content support
@@ -79,7 +79,7 @@ The following modules **should** be working in Slim version but…
 
 **Unsupported Modules**
 
-The following modules in Jetpack are not supported in Jetpack Slim.
+The following modules in Jetpack are not supported in Slimpack.
 
 * Enhanced Distribution
 * JSON API
@@ -128,7 +128,7 @@ No.
 
 = Can I use this with original Jetpack at the same time? =
 
-No. It's not compatible with the original Jetpack. You can't activate Jetpack and Jetpack Slim at the same time.
+No. It's not compatible with the original Jetpack. You can't activate Jetpack and Slimpack at the same time.
 
 == Screenshots ==
 
