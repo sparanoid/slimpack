@@ -1,10 +1,10 @@
-=== Slimpack ===
+=== Slimpack - Lightweight Jetpack ===
 
 Contributors: Sparanoid
 Donate link: http://sparanoid.com/donate/
 Tags: api, archives, audio, Blip, blip.tv, dailymotion, Digg, equations, flickr, gallery, google, googlemaps, googlevideo, gravatar, hovercards, jet pack, json, kyte, kytetv, latex, livevideo, math, maths, monitor, mosaic, notes, notifications, omnisearch, profile, redlasso, REST, rockyou, rss, scribd, search, shortcode, shortlinks, slide, slideshare, slideshow, soundcloud, sso, statistics, stats, subscriptions, tweets, twitter, videopress, views, vimeo, widget, WordPress.com, wp.me, youtube
 Requires at least: 4.1
-Tested up to: 4.2.1
+Tested up to: 4.2.2
 Stable tag: 1.0.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -138,10 +138,16 @@ No. It's not compatible with the original Jetpack. You can't activate Jetpack an
 
 == Changelog ==
 
+= 1.0.1 =
+* Update plugin name and bump tested up to section
+
 = 1.0.0 =
 * First release
 
 == Upgrade Notice ==
+
+= 1.0.1 =
+* Update plugin name and bump tested up to section
 
 = 1.0.0 =
 * First release
