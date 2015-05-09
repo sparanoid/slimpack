@@ -5,7 +5,7 @@ Donate link: http://sparanoid.com/donate/
 Tags: api, archives, audio, Blip, blip.tv, dailymotion, Digg, equations, flickr, gallery, google, googlemaps, googlevideo, gravatar, hovercards, jet pack, json, kyte, kytetv, latex, livevideo, math, maths, monitor, mosaic, notes, notifications, omnisearch, profile, redlasso, REST, rockyou, rss, scribd, search, shortcode, shortlinks, slide, slideshare, slideshow, soundcloud, sso, statistics, stats, subscriptions, tweets, twitter, videopress, views, vimeo, widget, WordPress.com, wp.me, youtube
 Requires at least: 4.1
 Tested up to: 4.2.2
-Stable tag: 1.0.1
+Stable tag: 1.0.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -23,61 +23,63 @@ View source code and submit issue at [GitHub](https://github.com/sparanoid/slimp
 
 Note: Please do not submit issue unless the issue cannot be reproduced using the original Jetpack module.
 
-**Features**
+= Features =
 
 * All source code is untouched and synced from Jetpack
 * Better performance than original Jetpack. All features that require a WordPress.com account have been removed. You don't need to connect to WordPress.com to use this plugin.
-* Multilingual support
+* Multilingual support (and languages have already bundled in Slimpack!)
 
-**Available Modules**
+= Available Modules =
 
 The following modules are available in Slimpack:
 
 * Carousels
 * Contact Form
 * Custom CSS
+* Custom Content Types
 * Infinite Scroll
+* Gravatar Hovercards
 * Beautiful Math (LaTeX)
 * Markdown
+* Omnisearch
+* Sharing (Sharedaddy)
 * Shortcode Embeds
 * Site Icon
 * Site Verification
 * Widget Visibility
 * Widgets
 
-Additional note:
+Additional notes:
 
 * `devicepx-jetpack.js` is already packed in the plugin! No external script will slow down your website.
 * WordPress version check is missing in Slim version, so make sure your WordPress is up-to-date.
 * Beautiful Math: still need internet connection to get generated LaTeX images from `wp.com`.
 * Site Icon: Sync icon to WordPress.com via Jetpack server is disabled.
 
-**Under-the-hood Features**
+= Under-the-hood Features =
 
 The following hidden modules are also available in Slimpack:
 
-* Holiday Snow module
+* Holiday Snow
 * Feature Content support
+* Open Graph
+* Twitter Cards
 * Other theme tools originally shipped from Jetpack
 
-**Work in Progress**
+= Work in Progress =
 
 The following modules are working-in-progress, I'll add them later.
 
-* Gravatar Hovercards
-* Omnisearch
-* Sharing Support
 * Mobile Theme (Minileven)
 * VaultPress
 
-**Dropped Modules**
+= Dropped Modules =
 
 The following modules **should** be working in Slim version but…
 
-* Custom Content Types: It requires too many Jetpack dependencies.
 * Tiled Galleries: It requires Photon to retrieve images generated from WordPress.com proxy.
 
-**Unsupported Modules**
+= Unsupported Modules =
 
 The following modules in Jetpack are not supported in Slimpack.
 
@@ -99,6 +101,11 @@ The following modules in Jetpack are not supported in Slimpack.
 * VideoPress
 * WP.me Shortlinks
 * WordPress.com Stats
+
+= Known Issues =
+
+* VaultPress doesn't work with this plugin (at this time), I'm looking for a solution.
+* Please note: Slimpack is not fully tested on multisite, if you see any issue with multisite, feel free to give me feedback.
 
 == Installation ==
 
@@ -138,6 +145,14 @@ No. It's not compatible with the original Jetpack. You can't activate Jetpack an
 
 == Changelog ==
 
+= 1.0.2 =
+* Add Custom Content Types support
+* Add Gravatar Hovercards support (internet connection is required to display hovercards)
+* Add Omnisearch support
+* Add Sharing (Sharedaddy) support
+* Add Open Graph support
+* Add Twitter Cards support
+
 = 1.0.1 =
 * Update plugin name and bump tested up to section
 
@@ -145,6 +160,14 @@ No. It's not compatible with the original Jetpack. You can't activate Jetpack an
 * First release
 
 == Upgrade Notice ==
+
+= 1.0.2 =
+* Add Custom Content Types support
+* Add Gravatar Hovercards support (internet connection is required to display hovercards)
+* Add Omnisearch support
+* Add Sharing (Sharedaddy) support
+* Add Open Graph support
+* Add Twitter Cards support
 
 = 1.0.1 =
 * Update plugin name and bump tested up to section
