@@ -11,7 +11,7 @@ class Jetpack_Custom_CSS {
 		// Override the edit link, the default link causes a redirect loop
 		add_filter( 'get_edit_post_link', array( __CLASS__, 'revision_post_link' ), 10, 3 );
 
-		// Overwrite the content width global variable if one is set in the custom css
+		// Overwrite the content width global variable if one is set in the custom css 
 		add_action( 'template_redirect', array( __CLASS__, 'set_content_width' ) );
 		add_action( 'admin_init', array( __CLASS__, 'set_content_width' ) );
 
@@ -223,7 +223,7 @@ class Jetpack_Custom_CSS {
 			$csstidy->parse( $css );
 
 			/**
-			 * Fires after parsing the css with CSSTidy, but only if
+			 * Fires after parsing the css with CSSTidy, but only if 
 			 * the preprocessor is not cinfigured for use
 			 *
 			 * @since ?
@@ -472,7 +472,7 @@ class Jetpack_Custom_CSS {
 	}
 
 	/**
-	 * Currently this filter function gets called on
+	 * Currently this filter function gets called on 
 	 * 'template_redirect' action and
 	 * 'admin_init' action
 	 */
@@ -564,7 +564,7 @@ class Jetpack_Custom_CSS {
 	}
 
 	static function print_css() {
-
+		
 		/**
 		 * Fires right before printing the custom CSS inside the <head> element
 		 *
@@ -707,7 +707,7 @@ class Jetpack_Custom_CSS {
 		flag.style.textAlign = 'center';
 		flag.style.fontSize = '15px';
 		flag.style.padding = '2px';
-		flag.style.fontFamily = 'sans-serif';
+		flag.style.fontFamily = 'sans-serif'; 
 		document.body.style.paddingTop = '0px';
 		document.body.insertBefore(flag, document.body.childNodes[0]);
 		";
@@ -793,16 +793,16 @@ class Jetpack_Custom_CSS {
 			add_meta_box( 'revisionsdiv', __( 'CSS Revisions', 'jetpack' ), array( __CLASS__, 'revisions_meta_box' ), 'editcss', 'side' );
 		?>
 		<div class="wrap">
-			<?php
-
+			<?php 
+			
 			/**
 			 * Fire right before the custom css page begins
 			 *
 			 * @since ?
 			 * @module Custom_CSS
 			 **/
-			do_action( 'custom_design_header' );
-
+			do_action( 'custom_design_header' ); 
+			
 			?>
 			<h2><?php _e( 'CSS Stylesheet Editor', 'jetpack' ); ?></h2>
 			<form id="safecssform" action="" method="post">
@@ -814,7 +814,7 @@ class Jetpack_Custom_CSS {
 					<p class="css-support"><?php echo apply_filters( 'safecss_intro_text', __( 'New to CSS? Start with a <a href="http://www.htmldog.com/guides/cssbeginner/">beginner tutorial</a>. Questions?
 		Ask in the <a href="http://wordpress.org/support/forum/themes-and-templates">Themes and Templates forum</a>.', 'jetpack' ) ); ?></p>
 					<p class="css-support"><?php echo __( 'Note: Custom CSS will be reset when changing themes.', 'jetpack' ); ?></p>
-
+					
 					<div id="post-body" class="metabox-holder columns-2">
 						<div id="post-body-content">
 							<div class="postarea">
@@ -995,8 +995,8 @@ class Jetpack_Custom_CSS {
 						<a class="cancel-css-mode hide-if-no-js" href="#css-mode"><?php esc_html_e( 'Cancel', 'jetpack' ); ?></a>
 					</div>
 				</div>
-				<?php
-
+				<?php 
+				
 				/**
 				 * Allows addition of elements to the submit box for custom css
 				 * on the wp-admin side
@@ -1004,8 +1004,8 @@ class Jetpack_Custom_CSS {
 				 * @since ?
 				 * @module Custom_CSS
 				 **/
-				do_action( 'custom_css_submitbox_misc_actions' );
-
+				do_action( 'custom_css_submitbox_misc_actions' ); 
+				
 				?>
 			</div>
 		</div>
@@ -1589,7 +1589,7 @@ function safecss_class() {
 		}
 
 		function postparse() {
-
+			
 			/**
 			 * Do actions after parsing the css
 			 *

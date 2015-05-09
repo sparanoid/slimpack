@@ -54,7 +54,7 @@ class Jetpack_Omnisearch {
 		} else {
 			wp_register_style( 'omnisearch-admin', plugins_url( 'omnisearch.css', __FILE__ ), $deps );
 		}
-
+		
 	}
 
 	function jetpack_admin_menu() {

@@ -34,11 +34,7 @@ function gravatar_hovercards_configuration_load() {
 	exit;
 }
 
-// add_action( 'jetpack_modules_loaded', 'grofiles_hovercards_init' );
-
-// SLIMPACK: jetpack_modules_loaded is defined in videopress.php
-// Since we don't have it, just init hovercards right after init.
-add_action( 'init', 'grofiles_hovercards_init' );
+add_action( 'jetpack_modules_loaded', 'grofiles_hovercards_init' );
 
 /* Hovercard Settings */
 

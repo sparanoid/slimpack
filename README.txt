@@ -2,10 +2,10 @@
 
 Contributors: Sparanoid
 Donate link: http://sparanoid.com/donate/
-Tags: api, archives, audio, Blip, blip.tv, dailymotion, Digg, equations, flickr, gallery, google, googlemaps, googlevideo, gravatar, hovercards, jet pack, json, kyte, kytetv, latex, livevideo, math, maths, monitor, mosaic, notes, notifications, omnisearch, profile, redlasso, REST, rockyou, rss, scribd, search, shortcode, shortlinks, slide, slideshare, slideshow, soundcloud, sso, statistics, stats, subscriptions, tweets, twitter, videopress, views, vimeo, widget, WordPress.com, wp.me, youtube
-Requires at least: 4.1
+Tags: Slimpack, WordPress.com, statistics, stats, views, tweets, twitter, widget, gravatar, hovercards, profile, equations, latex, math, maths, youtube, shortcode, archives, audio, blip, bliptv, dailymotion, digg, flickr, googlevideo, google, googlemaps, kyte, kytetv, livevideo, redlasso, rockyou, rss, scribd, slide, slideshare, soundcloud, vimeo, shortlinks, wp.me, subscriptions, notifications, notes, json, api, rest, mosaic, gallery, slideshow, videopress, monitor, search, omnisearch, sso, jet pack
+Requires at least: 4.1.1
 Tested up to: 4.2.2
-Stable tag: 1.0.2
+Stable tag: 1.0.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -21,10 +21,13 @@ More information please visit my [site](http://sparanoid.com/work/slimpack/).
 
 View source code and submit issue at [GitHub](https://github.com/sparanoid/slimpack)
 
+Love this? Please consider [buying me a cup of coffee](http://sparanoid.com/donate/).
+
 Note: Please do not submit issue unless the issue cannot be reproduced using the original Jetpack module.
 
 = Features =
 
+* Transfer from Jetpack to Slimpack seamlessly, just deactivate Jetpack and activate Slimpack, all settings and module status will be kept and work just like before.
 * All source code is untouched and synced from Jetpack
 * Better performance than original Jetpack. All features that require a WordPress.com account have been removed. You don't need to connect to WordPress.com to use this plugin.
 * Multilingual support (and languages have already bundled in Slimpack!)
@@ -52,15 +55,15 @@ The following modules are available in Slimpack:
 Additional notes:
 
 * `devicepx-jetpack.js` is already packed in the plugin! No external script will slow down your website.
-* WordPress version check is missing in Slim version, so make sure your WordPress is up-to-date.
 * Beautiful Math: still need internet connection to get generated LaTeX images from `wp.com`.
 * Site Icon: Sync icon to WordPress.com via Jetpack server is disabled.
+* VideoPress shortcode: VideoPress shortcode is removed since VideoPress is not available in Slimpack .
 
 = Under-the-hood Features =
 
 The following hidden modules are also available in Slimpack:
 
-* Holiday Snow
+* Holiday Snow!
 * Feature Content support
 * Open Graph
 * Twitter Cards
@@ -107,14 +110,23 @@ The following modules in Jetpack are not supported in Slimpack.
 * VaultPress doesn't work with this plugin (at this time), I'm looking for a solution.
 * Please note: Slimpack is not fully tested on multisite, if you see any issue with multisite, feel free to give me feedback.
 
+Love this? Please consider [buying me a cup of coffee](http://sparanoid.com/donate/).
+
 == Installation ==
 
 This section describes how to install the plugin and get it working.
 
 WordPress:
 
+Transfer from Jetpack to Slimpack seamlessly, just deactivate Jetpack and activate Slimpack, all settings and module status will be kept and work just like before.
+
+1. Download it from your WordPress Plugin page
+2. Deactivate Jetpack and activate Slimpack in Plugin page
+
+or you can upload the plugin manually:
+
 1. Upload the extracted files to the `/wp-content/plugins/` directory
-2. In 'Plugins' page, choose 'Activate'
+2. Deactivate Jetpack and activate Slimpack in Plugin page
 
 Multisite enabled WordPress:
 
@@ -139,11 +151,13 @@ No. It's not compatible with the original Jetpack. You can't activate Jetpack an
 
 == Screenshots ==
 
-1. A great demo
-
-2. Option page
+1. Settings page
 
 == Changelog ==
+
+= 1.0.3 =
+* Update readme
+* Sync scripts from Jetpack
 
 = 1.0.2 =
 * Add Custom Content Types support
@@ -161,13 +175,11 @@ No. It's not compatible with the original Jetpack. You can't activate Jetpack an
 
 == Upgrade Notice ==
 
+= 1.0.3 =
+* Sync scripts from Jetpack, many modules added from Jetpack in version 1.0.2
+
 = 1.0.2 =
-* Add Custom Content Types support
-* Add Gravatar Hovercards support (internet connection is required to display hovercards)
-* Add Omnisearch support
-* Add Sharing (Sharedaddy) support
-* Add Open Graph support
-* Add Twitter Cards support
+* Add Custom Content Types, Gravatar Hovercards, Omnisearch, Sharing (Sharedaddy), Open Graph, Twitter Cards support.
 
 = 1.0.1 =
 * Update plugin name and bump tested up to section

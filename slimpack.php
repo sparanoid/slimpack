@@ -3,7 +3,7 @@
 Plugin Name: Slimpack
 Plugin URI: http://sparanoid.com/work/slimpack/
 Description: Slimpack — Lightweight Jetpack. Super-fast performance without modules that requires contracting WordPress.com.
-Version: 1.0.2
+Version: 1.0.3
 Author: Tunghsiao Liu
 Author URI: http://sparanoid.com/
 Author Email: t@sparanoid.com
@@ -290,6 +290,9 @@ function slimpack_conditions() {
 	if (isset($tmp['jp_gravatar_hovercards'])) {
 		if($tmp['jp_custom_css']=='1'){
 			require_once( JETPACK__PLUGIN_DIR . 'modules/gravatar-hovercards.php' );
+			// SLIMPACK: jetpack_modules_loaded is defined in videopress.php
+			// Since we don't have it, just init hovercards right after gravatar-hovercards module loaded.
+			add_action( 'init', 'grofiles_hovercards_init' );
 		}
 	}
 
