@@ -38,6 +38,8 @@ define( 'JETPACK__VERSION',            '3.5.3' );
 define( 'JETPACK__PLUGIN_DIR',         plugin_dir_path( __FILE__ ) . SLIMPACK__BASE );
 define( 'JETPACK__PLUGIN_FILE',        __FILE__ );
 
+defined( 'JETPACK__GLOTPRESS_LOCALES_PATH' ) or define( 'JETPACK__GLOTPRESS_LOCALES_PATH', JETPACK__PLUGIN_DIR . 'locales.php' );
+
 if ( !class_exists( 'Jetpack' ) ) {
 	require_once( JETPACK__PLUGIN_DIR . 'class.jetpack.php' );
 }
@@ -100,6 +102,7 @@ function slimpack_add_defaults() {
 			"jp_infinite_scroll" => "1",
 			"jp_latex" => "0",
 			"jp_markdown" => "1",
+			"jp_sharedaddy" => "0",
 			"jp_shortcodes" => "1",
 			"jp_site_icon" => "1",
 			"jp_verification_tools" => "1",
@@ -187,6 +190,11 @@ function slimpack_render_form() {
 							<label>
 								<input name="slimpack_options[jp_markdown]" type="checkbox" value="1" <?php if (isset($options['jp_markdown'])) { checked('1', $options['jp_markdown']); } ?>>
 								<?php _e( 'Markdown', 'jetpack' ); ?>
+							</label><br>
+
+							<label>
+								<input name="slimpack_options[jp_sharedaddy]" type="checkbox" value="1" <?php if (isset($options['jp_sharedaddy'])) { checked('1', $options['jp_sharedaddy']); } ?>>
+								<?php _e( 'Sharing', 'jetpack' ); ?>
 							</label><br>
 
 							<label>
@@ -278,6 +286,12 @@ function slimpack_conditions() {
 		}
 	}
 
+	if (isset($tmp['jp_sharedaddy'])) {
+		if($tmp['jp_sharedaddy']=='1'){
+			require_once( JETPACK__PLUGIN_DIR . 'modules/sharedaddy.php' );
+		}
+	}
+
 	if (isset($tmp['jp_shortcodes'])) {
 		if($tmp['jp_shortcodes']=='1'){
 			require_once( JETPACK__PLUGIN_DIR . 'modules/shortcodes.php' );
@@ -307,8 +321,6 @@ function slimpack_conditions() {
 			require_once( JETPACK__PLUGIN_DIR . 'modules/widgets.php' );
 		}
 	}
-
-	require_once( JETPACK__PLUGIN_DIR . 'modules/sharedaddy.php' );
 }
 
 // Add a 'Settings' link on Plugins page
