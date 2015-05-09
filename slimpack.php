@@ -40,19 +40,12 @@ define( 'JETPACK__PLUGIN_FILE',        __FILE__ );
 
 defined( 'JETPACK__GLOTPRESS_LOCALES_PATH' ) or define( 'JETPACK__GLOTPRESS_LOCALES_PATH', JETPACK__PLUGIN_DIR . 'locales.php' );
 
-if ( !class_exists( 'Jetpack' ) ) {
+if ( class_exists( 'Jetpack' ) ) {
+	trigger_error( sprintf( __( 'Jetpack is running! deactivate it and try again.', 'jetpack' ), 'WordPress.com Stats' ), E_USER_ERROR );
+} else {
 	require_once( JETPACK__PLUGIN_DIR . 'class.jetpack.php' );
-}
-
-if ( !function_exists( 'jetpack_is_mobile' ) ) {
 	require_once( JETPACK__PLUGIN_DIR . 'class.jetpack-user-agent.php' );
-}
-
-if ( !class_exists( 'Jetpack_Options' ) ) {
 	require_once( JETPACK__PLUGIN_DIR . 'class.jetpack-options.php' );
-}
-
-if ( !function_exists( 'jetpack_require_lib' ) ) {
 	require_once( JETPACK__PLUGIN_DIR . 'require-lib.php' );
 }
 
