@@ -30,9 +30,13 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 */
 
-define( 'SLIMPACK__BASE',							'slimpack/' );
-define( 'JETPACK__PLUGIN_DIR',				plugin_dir_path( __FILE__ ) . SLIMPACK__BASE );
-define( 'JETPACK__PLUGIN_FILE',				__FILE__ );
+// Slimpack defines
+define( 'SLIMPACK__BASE',              'slimpack/' );
+
+// Jetpack defines
+define( 'JETPACK__VERSION',            '3.5.3' );
+define( 'JETPACK__PLUGIN_DIR',         plugin_dir_path( __FILE__ ) . SLIMPACK__BASE );
+define( 'JETPACK__PLUGIN_FILE',        __FILE__ );
 
 if ( !class_exists( 'Jetpack' ) ) {
 	require_once( JETPACK__PLUGIN_DIR . 'class.jetpack.php' );
