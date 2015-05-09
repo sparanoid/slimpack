@@ -67,6 +67,7 @@ add_filter( 'plugin_action_links', 'slimpack_plugin_action_links', 10, 2 );
 // Slimpack
 add_action( 'init', array( 'Jetpack', 'init' ) );
 add_action( 'plugins_loaded', array( 'Jetpack', 'load_modules' ), 100 );
+add_filter( 'is_jetpack_site', '__return_true' );
 
 add_action( 'activated_plugin','slimpack_save_error' );
 function slimpack_save_error(){
@@ -103,6 +104,7 @@ function slimpack_add_defaults() {
 			"jp_infinite_scroll" => "1",
 			"jp_latex" => "0",
 			"jp_markdown" => "1",
+			"jp_omnisearch" => "0",
 			"jp_sharedaddy" => "0",
 			"jp_shortcodes" => "1",
 			"jp_site_icon" => "1",
@@ -196,6 +198,11 @@ function slimpack_render_form() {
 							<label>
 								<input name="slimpack_options[jp_markdown]" type="checkbox" value="1" <?php if (isset($options['jp_markdown'])) { checked('1', $options['jp_markdown']); } ?>>
 								<?php _e( 'Markdown', 'jetpack' ); ?>
+							</label><br>
+
+							<label>
+								<input name="slimpack_options[jp_omnisearch]" type="checkbox" value="1" <?php if (isset($options['jp_omnisearch'])) { checked('1', $options['jp_omnisearch']); } ?>>
+								<?php _e( 'Omnisearch', 'jetpack' ); ?>
 							</label><br>
 
 							<label>
@@ -295,6 +302,15 @@ function slimpack_conditions() {
 	if (isset($tmp['jp_markdown'])) {
 		if($tmp['jp_markdown']=='1'){
 			require_once( JETPACK__PLUGIN_DIR . 'modules/markdown.php' );
+		}
+	}
+
+	if (isset($tmp['jp_omnisearch'])) {
+		if($tmp['jp_omnisearch']=='1'){
+			// SLIMPACK: icon hotfix
+			require_once( JETPACK__PLUGIN_DIR . '_inc/genericons.php' );
+			require_once( JETPACK__PLUGIN_DIR . 'modules/omnisearch.php' );
+			jetpack_register_genericons();
 		}
 	}
 
