@@ -303,6 +303,8 @@ function slimpack_conditions() {
 			require_once( JETPACK__PLUGIN_DIR . 'modules/widgets.php' );
 		}
 	}
+
+	require_once( JETPACK__PLUGIN_DIR . 'modules/sharedaddy.php' );
 }
 
 // Add a 'Settings' link on Plugins page

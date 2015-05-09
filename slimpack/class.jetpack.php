@@ -68,6 +68,14 @@ class Jetpack {
 		if ( ! wp_script_is( 'jquery.spin', 'registered' ) ) {
 			wp_register_script( 'jquery.spin', plugins_url( '_inc/jquery.spin.js', __FILE__ ), array( 'jquery', 'spin' ), '1.3' );
 		}
+
+		/**
+		 * As jetpack_register_genericons is by default fired off a hook,
+		 * the hook may have already fired by this point.
+		 * So, let's just trigger it manually.
+		 */
+		require_once( JETPACK__PLUGIN_DIR . '_inc/genericons.php' );
+		jetpack_register_genericons();
 	}
 
 	/**
