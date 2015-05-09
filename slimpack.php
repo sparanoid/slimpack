@@ -99,6 +99,7 @@ function slimpack_add_defaults() {
 			"jp_carousel" => "1",
 			"jp_contact_form" => "1",
 			"jp_custom_css" => "1",
+			"jp_gravatar_hovercards" => "0",
 			"jp_infinite_scroll" => "1",
 			"jp_latex" => "0",
 			"jp_markdown" => "1",
@@ -175,6 +176,11 @@ function slimpack_render_form() {
 							<label>
 								<input name="slimpack_options[jp_custom_css]" type="checkbox" value="1" <?php if (isset($options['jp_custom_css'])) { checked('1', $options['jp_custom_css']); } ?>>
 								<?php _e( 'Custom CSS', 'jetpack' ); ?>
+							</label><br>
+
+							<label>
+								<input name="slimpack_options[jp_gravatar_hovercards]" type="checkbox" value="1" <?php if (isset($options['jp_gravatar_hovercards'])) { checked('1', $options['jp_gravatar_hovercards']); } ?>>
+								<?php _e( 'Gravatar Hovercards', 'jetpack' ); ?>
 							</label><br>
 
 							<label>
@@ -265,6 +271,12 @@ function slimpack_conditions() {
 	if (isset($tmp['jp_custom_css'])) {
 		if($tmp['jp_custom_css']=='1'){
 			require_once( JETPACK__PLUGIN_DIR . 'modules/custom-css.php' );
+		}
+	}
+
+	if (isset($tmp['jp_gravatar_hovercards'])) {
+		if($tmp['jp_custom_css']=='1'){
+			require_once( JETPACK__PLUGIN_DIR . 'modules/gravatar-hovercards.php' );
 		}
 	}
 
