@@ -518,6 +518,16 @@ class Jetpack {
 	}
 
 	/**
+	 * Returns the requested option.  Looks in jetpack_options or jetpack_$name as appropriate.
+ 	 *
+	 * @param string $name    Option name
+	 * @param mixed  $default (optional)
+	 */
+	public static function get_option( $name, $default = false ) {
+		return Jetpack_Options::get_option( $name, $default );
+	}
+
+	/**
 	 * Check whether or not a Jetpack module is active.
 	 *
 	 * @param string $module The slug of a Jetpack module.
@@ -527,6 +537,29 @@ class Jetpack {
 	 */
 	public static function is_module_active( $module ) {
 		return in_array( $module, self::get_active_modules() );
+	}
+
+	public static function deactivate_module( $module ) {
+		do_action( 'jetpack_pre_deactivate_module', $module );
+
+		$jetpack = Jetpack::init();
+
+		$active = Jetpack::get_active_modules();
+		$new    = array_filter( array_diff( $active, (array) $module ) );
+
+		do_action( "jetpack_deactivate_module_$module", $module );
+
+		// A flag for Jump Start so it's not shown again.
+		if ( 'new_connection' === Jetpack_Options::get_option( 'jumpstart' ) ) {
+			Jetpack_Options::update_option( 'jumpstart', 'jetpack_action_taken' );
+
+			//Jump start is being dismissed send data to MC Stats
+			$jetpack->stat( 'jumpstart', 'manual,deactivated-'.$module );
+
+			$jetpack->do_stats( 'server_side' );
+		}
+
+		return Jetpack_Options::update_option( 'active_modules', array_unique( $new ) );
 	}
 
 	public static function enable_module_configurable( $module ) {
@@ -575,5 +608,54 @@ class Jetpack {
 	public static function get_content_width() {
 		$content_width = isset( $GLOBALS['content_width'] ) ? $GLOBALS['content_width'] : false;
 		return apply_filters( 'jetpack_content_width', $content_width );
+	}
+
+	/*
+	 * A graceful transition to using Core's site icon.
+	 *
+	 * All of the hard work has already been done with the image
+	 * in all_done_page(). All that needs to be done now is update
+	 * the option and display proper messaging.
+	 *
+	 * @todo remove when WP 4.3 is minimum
+	 *
+	 * @since 3.6.1
+	 *
+	 * @return bool false = Core's icon not available || true = Core's icon is available
+	 */
+	public static function jetpack_site_icon_available_in_core() {
+		global $wp_version;
+		$core_icon_available = function_exists( 'has_site_icon' ) && version_compare( $wp_version, '4.3-beta' ) >= 0;
+
+		if ( ! $core_icon_available ) {
+			return false;
+		}
+
+		// No need for Jetpack's site icon anymore if core's is already set
+		if ( has_site_icon() ) {
+			if ( Jetpack::is_module_active( 'site-icon' ) ) {
+				Jetpack::log( 'deactivate', 'site-icon' );
+				Jetpack::deactivate_module( 'site-icon' );
+			}
+			return true;
+		}
+
+		// Transfer Jetpack's site icon to use core.
+		$site_icon_id = Jetpack::get_option( 'site_icon_id' );
+		if ( $site_icon_id ) {
+			// Update core's site icon
+			update_option( 'site_icon', $site_icon_id );
+
+			// Delete Jetpack's icon option. We still want the blavatar and attached data though.
+			delete_option( 'site_icon_id' );
+		}
+
+		// No need for Jetpack's site icon anymore
+		if ( Jetpack::is_module_active( 'site-icon' ) ) {
+			Jetpack::log( 'deactivate', 'site-icon' );
+			Jetpack::deactivate_module( 'site-icon' );
+		}
+
+		return true;
 	}
 }

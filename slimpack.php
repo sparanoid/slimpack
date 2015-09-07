@@ -105,8 +105,7 @@ function slimpack_add_defaults() {
 			"jp_site_icon" => "1",
 			"jp_verification_tools" => "1",
 			"jp_widget_visibility" => "1",
-			"jp_widgets" => "1",
-			"radio_strict_filtering" => "strict_on"
+			"jp_widgets" => "1"
 		);
 		update_option('slimpack_options', $arr);
 	}
@@ -123,12 +122,7 @@ function slimpack_init() {
 	// Checks radio buttons have a valid choice (ie. no section is blank)
 	// Primarily to check newly added options have correct initial values
 	$tmp = get_option('slimpack_options');
-
-	// Check strict filtering option has a starting value
-	if(!$tmp['radio_strict_filtering']) {
-		$tmp["radio_strict_filtering"] = "strict_off";
-		update_option('slimpack_options', $tmp);
-	}
+	update_option('slimpack_options', $tmp);
 
 	// Register settings
 	register_setting( 'slimpack_plugin_options', 'slimpack_options' );
