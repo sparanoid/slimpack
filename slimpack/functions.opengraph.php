@@ -252,7 +252,7 @@ function jetpack_og_get_image( $width = 200, $height = 200, $max_images = 4 ) { 
 
 	// Finally fall back, blank image
 	if ( empty( $image ) ) {
-		$image['src'] = apply_filters( 'jetpack_open_graph_image_default', 'https://s0.wp.com/i/blank.jpg' );
+		$image['src'] = apply_filters( 'jetpack_open_graph_image_default', plugins_url( '_inc/blank.jpg', __FILE__ ) );
 	}
 
 	return $image;
