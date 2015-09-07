@@ -2,7 +2,7 @@
 /*
 Plugin Name: Slimpack
 Plugin URI: http://sparanoid.com/work/slimpack/
-Description: Slimpack — Lightweight Jetpack. Super-fast performance without modules that requires contracting WordPress.com.
+Description: Slimpack — Lightweight Jetpack. Super-fast performance without modules that require contracting WordPress.com.
 Version: 1.0.4
 Author: Tunghsiao Liu
 Author URI: http://sparanoid.com/
@@ -144,7 +144,7 @@ function slimpack_render_form() {
 		<div class="icon32" id="icon-options-general"><br></div>
 		<h2><?php _e( 'Slimpack Options', 'slimpack' ); ?></h2>
 		<!-- <h3>Slimpack Options</h3> -->
-		<p><?php _e( 'Slimpack — Lightweight Jetpack. Super-fast performance without modules that requires contracting WordPress.com.', 'slimpack' ); ?></p>
+		<p><?php _e( 'Slimpack — Lightweight Jetpack. Super-fast performance without modules that require contracting WordPress.com.', 'slimpack' ); ?></p>
 
 		<form method="post" action="options.php">
 			<?php settings_fields('slimpack_plugin_options'); ?>
