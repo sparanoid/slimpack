@@ -511,6 +511,188 @@ class Jetpack {
 	}
 
 	/**
+	 * List available Jetpack modules. Simply lists .php files in /modules/.
+	 * Make sure to tuck away module "library" files in a sub-directory.
+	 */
+	public static function get_available_modules( $min_version = false, $max_version = false ) {
+		static $modules = null;
+
+		if ( ! isset( $modules ) ) {
+			$available_modules_option = Jetpack_Options::get_option( 'available_modules', array() );
+			// Use the cache if we're on the front-end and it's available...
+			if ( ! is_admin() && ! empty( $available_modules_option[ JETPACK__VERSION ] ) ) {
+				$modules = $available_modules_option[ JETPACK__VERSION ];
+			} else {
+				$files = Jetpack::glob_php( JETPACK__PLUGIN_DIR . 'modules' );
+
+				$modules = array();
+
+				foreach ( $files as $file ) {
+					if ( ! $headers = Jetpack::get_module( $file ) ) {
+						continue;
+					}
+
+					$modules[ Jetpack::get_module_slug( $file ) ] = $headers['introduced'];
+				}
+
+				Jetpack_Options::update_option( 'available_modules', array(
+					JETPACK__VERSION => $modules,
+				) );
+			}
+		}
+
+		$mods = apply_filters( 'jetpack_get_available_modules', $modules, $min_version, $max_version );
+
+		if ( ! $min_version && ! $max_version ) {
+			return array_keys( $mods );
+		}
+
+		$r = array();
+		foreach ( $mods as $slug => $introduced ) {
+			if ( $min_version && version_compare( $min_version, $introduced, '>=' ) ) {
+				continue;
+			}
+
+			if ( $max_version && version_compare( $max_version, $introduced, '<' ) ) {
+				continue;
+			}
+
+			$r[] = $slug;
+		}
+
+		return $r;
+	}
+
+	/**
+	 * Like core's get_file_data implementation, but caches the result.
+	 */
+	public static function get_file_data( $file, $headers ) {
+		//Get just the filename from $file (i.e. exclude full path) so that a consistent hash is generated
+		$file_name = basename( $file );
+		$file_data_option = Jetpack_Options::get_option( 'file_data', array() );
+		$key              = md5( $file_name . serialize( $headers ) );
+		$refresh_cache    = is_admin() && isset( $_GET['page'] ) && 'jetpack' === substr( $_GET['page'], 0, 7 );
+
+		// If we don't need to refresh the cache, and already have the value, short-circuit!
+		if ( ! $refresh_cache && isset( $file_data_option[ JETPACK__VERSION ][ $key ] ) ) {
+			return $file_data_option[ JETPACK__VERSION ][ $key ];
+		}
+
+		$data = get_file_data( $file, $headers );
+
+		// Strip out any old Jetpack versions that are cluttering the option.
+		$file_data_option = array_intersect_key( (array) $file_data_option, array( JETPACK__VERSION => null ) );
+		$file_data_option[ JETPACK__VERSION ][ $key ] = $data;
+		Jetpack_Options::update_option( 'file_data', $file_data_option );
+
+		return $data;
+	}
+
+	public static function translate_module_tag( $untranslated_tag ) {
+		// Tags are aggregated by tools/build-module-headings-translations.php
+		// and output in modules/module-headings.php
+		return _x( $untranslated_tag, 'Module Tag', 'jetpack' );
+	}
+
+	/**
+	 * Generate a module's path from its slug.
+	 */
+	public static function get_module_path( $slug ) {
+		return JETPACK__PLUGIN_DIR . "modules/$slug.php";
+	}
+
+	/**
+	 * Load module data from module file. Headers differ from WordPress
+	 * plugin headers to avoid them being identified as standalone
+	 * plugins on the WordPress plugins page.
+	 */
+	public static function get_module( $module ) {
+		$headers = array(
+			'name'                  => 'Module Name',
+			'description'           => 'Module Description',
+			'jumpstart_desc'        => 'Jumpstart Description',
+			'sort'                  => 'Sort Order',
+			'recommendation_order'  => 'Recommendation Order',
+			'introduced'            => 'First Introduced',
+			'changed'               => 'Major Changes In',
+			'deactivate'            => 'Deactivate',
+			'free'                  => 'Free',
+			'requires_connection'   => 'Requires Connection',
+			'auto_activate'         => 'Auto Activate',
+			'module_tags'           => 'Module Tags',
+			'feature'               => 'Feature',
+		);
+
+		$file = Jetpack::get_module_path( Jetpack::get_module_slug( $module ) );
+
+		$mod = Jetpack::get_file_data( $file, $headers );
+		if ( empty( $mod['name'] ) ) {
+			return false;
+		}
+
+		$mod['jumpstart_desc']          = _x( $mod['jumpstart_desc'], 'Jumpstart Description', 'jetpack' );
+		$mod['name']                    = _x( $mod['name'], 'Module Name', 'jetpack' );
+		$mod['description']             = _x( $mod['description'], 'Module Description', 'jetpack' );
+		$mod['sort']                    = empty( $mod['sort'] ) ? 10 : (int) $mod['sort'];
+		$mod['recommendation_order']    = empty( $mod['recommendation_order'] ) ? 20 : (int) $mod['recommendation_order'];
+		$mod['deactivate']              = empty( $mod['deactivate'] );
+		$mod['free']                    = empty( $mod['free'] );
+		$mod['requires_connection']     = ( ! empty( $mod['requires_connection'] ) && 'No' == $mod['requires_connection'] ) ? false : true;
+
+		if ( empty( $mod['auto_activate'] ) || ! in_array( strtolower( $mod['auto_activate'] ), array( 'yes', 'no', 'public' ) ) ) {
+			$mod['auto_activate'] = 'No';
+		} else {
+			$mod['auto_activate'] = (string) $mod['auto_activate'];
+		}
+
+		if ( $mod['module_tags'] ) {
+			$mod['module_tags'] = explode( ',', $mod['module_tags'] );
+			$mod['module_tags'] = array_map( 'trim', $mod['module_tags'] );
+			$mod['module_tags'] = array_map( array( __CLASS__, 'translate_module_tag' ), $mod['module_tags'] );
+		} else {
+			$mod['module_tags'] = array( self::translate_module_tag( 'Other' ) );
+		}
+
+		if ( $mod['feature'] ) {
+			$mod['feature'] = explode( ',', $mod['feature'] );
+			$mod['feature'] = array_map( 'trim', $mod['feature'] );
+		} else {
+			$mod['feature'] = array( self::translate_module_tag( 'Other' ) );
+		}
+
+		/**
+		 * Filter the feature array on a module
+		 *
+		 * This filter allows you to control where each module is filtered: Recommended,
+		 * Jumpstart, and the default "Other" listing.
+		 *
+		 * @since 3.5
+		 *
+		 * @param array   $mod['feature'] The areas to feature this module:
+		 *     'Jumpstart' adds to the "Jumpstart" option to activate many modules at once
+		 *     'Recommended' shows on the main Jetpack admin screen
+		 *     'Other' should be the default if no other value is in the array
+		 * @param string  $module The slug of the module, e.g. sharedaddy
+		 * @param array   $mod All the currently assembled module data
+		 */
+		$mod['feature'] = apply_filters( 'jetpack_module_feature', $mod['feature'], $module, $mod );
+
+		/**
+		 * Filter the returned data about a module.
+		 *
+		 * This filter allows overriding any info about Jetpack modules. It is dangerous,
+		 * so please be careful.
+		 *
+		 * @since 3.6
+		 *
+		 * @param array   $mod    The details of the requested module.
+		 * @param string  $module The slug of the module, e.g. sharedaddy
+		 * @param string  $file   The path to the module source file.
+		 */
+		return apply_filters( 'jetpack_get_module', $mod, $module, $file );
+	}
+
+	/**
 	 * Loads the currently active modules.
 	 */
 	public static function load_modules() {
@@ -537,6 +719,10 @@ class Jetpack {
 	 */
 	public static function is_module_active( $module ) {
 		return in_array( $module, self::get_active_modules() );
+	}
+
+	public static function is_module( $module ) {
+		return ! empty( $module ) && ! validate_file( $module, Jetpack::get_available_modules() );
 	}
 
 	public static function deactivate_module( $module ) {
