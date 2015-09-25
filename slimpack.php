@@ -3,7 +3,7 @@
 Plugin Name: Slimpack
 Plugin URI: http://sparanoid.com/work/slimpack/
 Description: Slimpack — Lightweight Jetpack. Super-fast performance without modules that require contracting WordPress.com.
-Version: 1.0.4
+Version: 1.0.5
 Author: Tunghsiao Liu
 Author URI: http://sparanoid.com/
 Author Email: t@sparanoid.com
