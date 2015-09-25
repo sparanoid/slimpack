@@ -47,6 +47,12 @@ if ( class_exists( 'Jetpack' ) ) {
 	require_once( JETPACK__PLUGIN_DIR . 'class.jetpack.php' );
 	require_once( JETPACK__PLUGIN_DIR . 'class.jetpack-user-agent.php' );
 	require_once( JETPACK__PLUGIN_DIR . 'class.jetpack-options.php' );
+
+	require_once( JETPACK__PLUGIN_DIR . 'class.media-extractor.php' );
+	require_once( JETPACK__PLUGIN_DIR . 'class.media-summary.php' );
+
+	require_once( JETPACK__PLUGIN_DIR . 'functions.compat.php' );
+
 	require_once( JETPACK__PLUGIN_DIR . 'require-lib.php' );
 }
 
