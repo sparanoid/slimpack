@@ -309,7 +309,7 @@ class Jetpack {
 	/**
 	 * Constructor.  Initializes WordPress hooks
 	 */
-	private function Jetpack() {
+	private function __construct() {
 		/*
 		 * Do things that should run even in the network admin
 		 * here, before we potentially fail out.
