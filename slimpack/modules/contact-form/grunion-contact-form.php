@@ -1142,7 +1142,7 @@ class Grunion_Contact_Form extends Crunion_Contact_Form_Shortcode {
 			'textarea' => false, // not a post_meta key.  This is stored in post_content
 		);
 
-		$contact_form_message = "<blockquote>\n";
+		$compiled_form = array();
 
 		// "Standard" field whitelist
 		foreach ( $field_value_map as $type => $meta_key ) {
