@@ -1103,9 +1103,32 @@ class Grunion_Contact_Form extends Crunion_Contact_Form_Shortcode {
 		return $r;
 	}
 
+	/**
+	 * Returns a success message to be returned if the form is sent via AJAX.
+	 *
+	 * @param int $feedback_id
+	 * @param object Grunion_Contact_Form $form
+	 *
+	 * @return string $message
+	 */
 	static function success_message( $feedback_id, $form ) {
-		$r_success_message = '';
+		return wp_kses(
+			'<blockquote class="contact-form-submission">'
+			. '<p>' . join( self::get_compiled_form( $feedback_id, $form ), '</p><p>' ) . '</p>'
+			. '</blockquote>',
+			array( 'br' => array(), 'blockquote' => array( 'class' => array() ), 'p' => array() )
+		);
+	}
 
+	/**
+	 * Returns a compiled form with labels and values in a form of  an array
+	 * of lines.
+	 * @param int $feedback_id
+	 * @param object Grunion_Contact_Form $form
+	 *
+	 * @return array $lines
+	 */
+	static function get_compiled_form( $feedback_id, $form ) {
 		$feedback       = get_post( $feedback_id );
 		$field_ids      = $form->get_field_ids();
 		$content_fields = Grunion_Contact_Form_Plugin::parse_fields_from_content( $feedback_id );
