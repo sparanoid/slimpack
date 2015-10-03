@@ -700,18 +700,22 @@ function grunion_ajax_spam() {
 			wp_mail( $to, $subject, $message, $headers );
 		}
 	} elseif( $_POST['make_it'] == 'publish' ) {
-		if ( !current_user_can($post_type_object->cap->delete_post, $post_id) )
+		if ( ! current_user_can($post_type_object->cap->delete_post, $post_id) ) {
 			wp_die( __( 'You are not allowed to move this item out of the Trash.', 'jetpack' ) );
+		}
 
-		if ( ! wp_untrash_post($post_id) )
+		if ( ! wp_untrash_post($post_id) ) {
 			wp_die( __( 'Error in restoring from Trash.', 'jetpack' ) );
+		}
 
 	} elseif( $_POST['make_it'] == 'trash' ) {
-		if ( !current_user_can($post_type_object->cap->delete_post, $post_id) )
+		if ( ! current_user_can($post_type_object->cap->delete_post, $post_id) ) {
 			wp_die( __( 'You are not allowed to move this item to the Trash.', 'jetpack' ) );
+		}
 
-		if ( ! wp_trash_post($post_id) )
+		if ( ! wp_trash_post($post_id) ) {
 			wp_die( __( 'Error in moving to Trash.', 'jetpack' ) );
+		}
 
 	}
 
