@@ -295,7 +295,7 @@ function grunion_manage_post_columns( $col, $post_id ) {
 				if ( !empty( $author_email ) )
 					$author_name_line = get_avatar( $author_email, 32 );
 
-				$author_name_line .= "<strong>{$author_name}</strong><br />";
+				$author_name_line .= sprintf( "<strong>%s</strong><br />", esc_html( $author_name ) );
 			}
 
 			$author_email_line = '';
