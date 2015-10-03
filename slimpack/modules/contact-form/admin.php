@@ -614,13 +614,16 @@ function grunion_ajax_spam() {
 	require_once dirname( __FILE__ ) . '/grunion-contact-form.php';
 
 	$current_menu = '';
-	if ( preg_match( '|post_type=feedback|', $_POST['sub_menu'] ) ) {
-		if ( preg_match( '|post_status=spam|', $_POST['sub_menu'] ) )
+	if ( isset( $_POST['sub_menu'] ) && preg_match( '|post_type=feedback|', $_POST['sub_menu'] ) ) {
+		if ( preg_match( '|post_status=spam|', $_POST['sub_menu'] ) ) {
 			$current_menu = 'spam';
-		else if ( preg_match( '|post_status=trash|', $_POST['sub_menu'] ) )
+		}
+		elseif ( preg_match( '|post_status=trash|', $_POST['sub_menu'] ) ) {
 			$current_menu = 'trash';
-		else
+		}
+		else {
 			$current_menu = 'messages';
+		}
 
 	}
 
