@@ -601,9 +601,10 @@ add_action( 'wp_ajax_grunion_ajax_spam', 'grunion_ajax_spam' );
 function grunion_ajax_spam() {
 	global $wpdb;
 
-	if ( empty( $_POST['make_it'] ) )
+	if ( empty( $_POST['make_it'] ) ) {
 		return;
-
+	}
+	
 	$post_id = (int) $_POST['post_id'];
 	check_ajax_referer( 'grunion-post-status-' . $post_id );
 	if ( !current_user_can("edit_page", $post_id) )
