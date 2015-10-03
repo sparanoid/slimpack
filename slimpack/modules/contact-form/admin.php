@@ -193,9 +193,10 @@ function grunion_handle_bulk_spam() {
 	$post_ids = array_map( 'intval', $_REQUEST['post'] );
 
 	foreach( $post_ids as $post_id ) {
-		if ( ! current_user_can( "edit_page", $post_id ) )
+		if ( ! current_user_can( "edit_page", $post_id ) ) {
 			wp_die( __( 'You are not allowed to manage this item.', 'jetpack' ) );
-
+		}
+		
 		$post = array(
 				'ID'           => $post_id,
 				'post_status'  => 'spam',
