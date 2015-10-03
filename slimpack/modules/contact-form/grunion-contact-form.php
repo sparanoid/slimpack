@@ -1177,24 +1177,24 @@ class Grunion_Contact_Form extends Crunion_Contact_Form_Shortcode {
 			$i = 0;
 			foreach ( $field_ids['extra'] as $field_id ) {
 				$field = $form->fields[$field_id];
+				$field_index = array_search( $field_id, $field_ids['all'] );
 
 				$label = $field->get_attribute( 'label' );
 
-				$contact_form_message .= sprintf(
+				$compiled_form[ $field_index ] = sprintf(
 					_x( '%1$s: %2$s', '%1$s = form field label, %2$s = form field value', 'jetpack' ),
 					wp_kses( $label, array() ),
 					wp_kses( $extra_fields[$extra_field_keys[$i]], array() )
-				) . '<br />';
+				);
 
 				$i++;
 			}
 		}
 
-		$contact_form_message .= "</blockquote><br /><br />";
+		// Sorting lines by the field index
+		ksort( $compiled_form );
 
-		$r_success_message .= wp_kses( $contact_form_message, array( 'br' => array(), 'blockquote' => array() ) );
-
-		return $r_success_message;
+		return $compiled_form;
 	}
 
 	/**
