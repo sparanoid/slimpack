@@ -305,9 +305,7 @@ function grunion_manage_post_columns( $col, $post_id ) {
 
 			$author_url_line = '';
 			if ( !empty( $author_url ) ) {
-				$author_url_line = "<a href='{$author_url}'>";
-				$author_url_line .= "{$author_url}</a><br />";
-
+				$author_url_line = sprintf( "<a href='%1\$s'>%1\$s</a><br />", esc_url( $author_url ) );
 			}
 
 			echo $author_name_line;
