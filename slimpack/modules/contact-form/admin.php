@@ -311,8 +311,8 @@ function grunion_manage_post_columns( $col, $post_id ) {
 			echo $author_name_line;
 			echo $author_email_line;
 			echo $author_url_line;
-			echo "<a href='edit.php?post_type=feedback&s={$author_ip}";
-			echo "&mode=detail'>{$author_ip}</a><br />";
+			echo "<a href='edit.php?post_type=feedback&s=" . urlencode( $author_ip );
+			echo "&mode=detail'>" . esc_html( $author_ip ) . "</a><br />";
 			if ( $form_url ) {
 				echo '<a href="' . esc_url( $form_url ) . '">' . esc_html( $form_url ) . '</a>';
 			}
