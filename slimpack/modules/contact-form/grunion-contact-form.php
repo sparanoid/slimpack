@@ -1537,6 +1537,35 @@ class Grunion_Contact_Form extends Crunion_Contact_Form_Shortcode {
 
 		update_post_meta( $post_id, '_feedback_extra_fields', $this->addslashes_deep( $extra_values ) );
 		update_post_meta( $post_id, '_feedback_akismet_values', $this->addslashes_deep( $akismet_values ) );
+
+		$message = self::get_compiled_form( $post_id, $this );
+
+		array_push(
+			$message,
+			"", // Empty line left intentionally
+			__( 'Time:', 'jetpack' ) . ' ' . $time,
+			__( 'IP Address:', 'jetpack' ) . ' ' . $comment_author_IP,
+			__( 'Contact Form URL:', 'jetpack' ) . " " . $url
+		);
+
+		if ( is_user_logged_in() ) {
+			array_push(
+				$message,
+				"",
+				sprintf(
+					__( 'Sent by a verified %s user.', 'jetpack' ),
+					isset( $GLOBALS['current_site']->site_name ) && $GLOBALS['current_site']->site_name ?
+						$GLOBALS['current_site']->site_name : '"' . get_option( 'blogname' ) . '"'
+				)
+			);
+		} else {
+			array_push( $message, __( 'Sent by an unverified visitor to your site.', 'jetpack' ) );
+		}
+
+		$message = join( $message, "\n" );
+		$message = apply_filters( 'contact_form_message', $message );
+		$message = Grunion_Contact_Form_Plugin::strip_tags( $message );
+				
 		update_post_meta( $post_id, '_feedback_email', $this->addslashes_deep( compact( 'to', 'message' ) ) );
 
 		/**
