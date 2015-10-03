@@ -607,9 +607,10 @@ function grunion_ajax_spam() {
 	
 	$post_id = (int) $_POST['post_id'];
 	check_ajax_referer( 'grunion-post-status-' . $post_id );
-	if ( !current_user_can("edit_page", $post_id) )
+	if ( ! current_user_can( "edit_page", $post_id ) ) {
 		wp_die( __( 'You are not allowed to manage this item.', 'jetpack' ) );
-
+	}
+	
 	require_once dirname( __FILE__ ) . '/grunion-contact-form.php';
 
 	$current_menu = '';
