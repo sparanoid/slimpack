@@ -736,8 +736,9 @@ function grunion_ajax_spam() {
 
 	if ( isset( $status['publish'] ) ) {
 		$status_html .= '<li><a href="edit.php?post_type=feedback"';
-		if ( $current_menu == 'messages' )
+		if ( $current_menu == 'messages' ) {
 			$status_html .= ' class="current"';
+		}
 
 		$status_html .= '>' . __( 'Messages', 'jetpack' ) . ' <span class="count">';
 		$status_html .= '(' . number_format( $status['publish'] ) . ')';
