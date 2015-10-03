@@ -662,28 +662,35 @@ function grunion_ajax_spam() {
 		$email = get_post_meta( $post_id, '_feedback_email', TRUE );
 		$content_fields = Grunion_Contact_Form_Plugin::parse_fields_from_content( $post_id );
 
-		if ( !empty( $email ) && !empty( $content_fields ) ) {
-			if ( isset( $content_fields['_feedback_author_email'] ) )
+		if ( ! empty( $email ) && !empty( $content_fields ) ) {
+			if ( isset( $content_fields['_feedback_author_email'] ) ) {
 				$comment_author_email = $content_fields['_feedback_author_email'];
+			}
 
-			if ( isset( $email['to'] ) )
+			if ( isset( $email['to'] ) ) {
 				$to = $email['to'];
+			}
 
-			if ( isset( $email['message'] ) )
+			if ( isset( $email['message'] ) ) {
 				$message = $email['message'];
+			}
 
-			if ( isset( $email['headers'] ) )
+			if ( isset( $email['headers'] ) ) {
 				$headers = $email['headers'];
+			}
 			else {
 				$headers = 'From: "' . $content_fields['_feedback_author'] .'" <wordpress@' . $blog_url['host']  . ">\r\n";
 
-				if ( !empty( $comment_author_email ) )
+				if ( ! empty( $comment_author_email ) ){
 					$reply_to_addr = $comment_author_email;
-				elseif ( is_array( $to ) )
+				}
+				elseif ( is_array( $to ) ) {
 					$reply_to_addr = $to[0];
+				}
 
-				if ( $reply_to_addr )
+				if ( $reply_to_addr ) {
 					$headers .= 'Reply-To: "' . $content_fields['_feedback_author'] .'" <' . $reply_to_addr . ">\r\n";
+				}
 
 				$headers .= "Content-Type: text/plain; charset=\"" . get_option('blog_charset') . "\"";
 			}
