@@ -1159,11 +1159,12 @@ class Grunion_Contact_Form extends Crunion_Contact_Form_Shortcode {
 					$value = trim( $value );
 				}
 
-				$contact_form_message .= sprintf(
+				$field_index = array_search( $field_ids[ $type ], $field_ids['all'] );
+				$compiled_form[ $field_index ] = sprintf(
 					_x( '%1$s: %2$s', '%1$s = form field label, %2$s = form field value', 'jetpack' ),
 					wp_kses( $field->get_attribute( 'label' ), array() ),
 					wp_kses( $value, array() )
-				) . '<br />';
+				);
 			}
 		}
 
