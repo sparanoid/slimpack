@@ -1495,39 +1495,6 @@ class Grunion_Contact_Form extends Crunion_Contact_Form_Shortcode {
 		$date_time_format = sprintf( $date_time_format, get_option( 'date_format' ), get_option( 'time_format' ) );
 		$time = date_i18n( $date_time_format, current_time( 'timestamp' ) );
 
-		$message = "$comment_author_label: $comment_author\n";
-		if ( !empty( $comment_author_email ) ) {
-			$message .= "$comment_author_email_label: $comment_author_email\n";
-		}
-		if ( !empty( $comment_author_url ) ) {
-			$message .= "$comment_author_url_label: $comment_author_url\n";
-		}
-		if ( !empty( $comment_content_label ) ) {
-			$message .= "$comment_content_label: $comment_content\n";
-		}
-		if ( !empty( $extra_values ) ) {
-			foreach ( $extra_values as $label => $value ) {
-				$message .= preg_replace( '#^\d+_#i', '', $label ) . ': ' . trim( $value ) . "\n";
-			}
-		}
-		$message .= "\n";
-		$message .= __( 'Time:', 'jetpack' ) . ' ' . $time . "\n";
-		$message .= __( 'IP Address:', 'jetpack' ) . ' ' . $comment_author_IP . "\n";
-		$message .= __( 'Contact Form URL:', 'jetpack' ) . " $url\n";
-
-		if ( is_user_logged_in() ) {
-			$message .= "\n";
-			$message .= sprintf(
-				__( 'Sent by a verified %s user.', 'jetpack' ),
-				isset( $GLOBALS['current_site']->site_name ) && $GLOBALS['current_site']->site_name ? $GLOBALS['current_site']->site_name : '"' . get_option( 'blogname' ) . '"'
-			);
-		} else {
-			$message .= __( 'Sent by an unverified visitor to your site.', 'jetpack' );
-		}
-
-		$message = apply_filters( 'contact_form_message', $message );
-		$message = Grunion_Contact_Form_Plugin::strip_tags( $message );
-
 		// keep a copy of the feedback as a custom post type
 		$feedback_time   = current_time( 'mysql' );
 		$feedback_title  = "{$comment_author} - {$feedback_time}";
