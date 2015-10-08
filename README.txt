@@ -1,6 +1,6 @@
 === Slimpack - Lightweight Jetpack ===
 
-Contributors: Sparanoid
+Contributors: Sparanoid, jjloomis
 Donate link: http://sparanoid.com/donate/
 Tags: Slimpack, WordPress.com, statistics, stats, views, tweets, twitter, widget, gravatar, hovercards, profile, equations, latex, math, maths, youtube, shortcode, archives, audio, blip, bliptv, dailymotion, digg, flickr, googlevideo, google, googlemaps, kyte, kytetv, livevideo, redlasso, rockyou, rss, scribd, slide, slideshare, soundcloud, vimeo, shortlinks, wp.me, subscriptions, notifications, notes, json, api, rest, mosaic, gallery, slideshow, videopress, monitor, search, omnisearch, sso, jet pack
 Requires at least: 4.1.1
@@ -155,6 +155,10 @@ No. It's not compatible with the original Jetpack. You can't activate Jetpack an
 
 == Changelog ==
 
+= 1.0.6 =
+* Update to Jetpack core 3.7.2
+* Welcome our first co-maintainer JJ Loomis (@jjloomis)!
+
 = 1.0.5 =
 * Update to Jetpack core 3.7
 * Fix PHP fatal errors with YouTube links
@@ -184,6 +188,9 @@ No. It's not compatible with the original Jetpack. You can't activate Jetpack an
 * First release
 
 == Upgrade Notice ==
+
+= 1.0.6 =
+* Update to Jetpack core 3.7.2
 
 = 1.0.5 =
 * Update to Jetpack core 3.7, Fix PHP fatal errors with YouTube links, Maintainer wanted, see https://github.com/sparanoid/slimpack/issues/1 for more info
