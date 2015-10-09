@@ -15,7 +15,7 @@ Please do not submit issues unless the issue cannot be reproduced using the orig
 
 **JJ Loomis**
 
-- GitHub: @[sparanoid](http://github.com/jjloomis)
+- GitHub: @[jjloomis](http://github.com/jjloomis)
 
 ## Licenses
 
