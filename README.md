@@ -13,6 +13,10 @@ Please do not submit issues unless the issue cannot be reproduced using the orig
 - Twitter: @[tunghsiao](http://twitter.com/tunghsiao)
 - GitHub: @[sparanoid](http://github.com/sparanoid)
 
+**JJ Loomis**
+
+- GitHub: @[jjloomis](http://github.com/jjloomis)
+
 ## Licenses
 
 GPLv2
