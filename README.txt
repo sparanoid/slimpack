@@ -157,7 +157,7 @@ No. It's not compatible with the original Jetpack. You can't activate Jetpack an
 
 = 1.0.6 =
 * Update to Jetpack core 3.7.2
-* Welcome our first co-maintainer JJ Loomis (@jjloomis)!
+* Welcome our first co-maintainer JJ Loomis (@jjloomis)!!!
 
 = 1.0.5 =
 * Update to Jetpack core 3.7
