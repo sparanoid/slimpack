@@ -1,5 +1,8 @@
 # Slimpack
 
+[![Build Status](https://travis-ci.org/sparanoid/slimpack.svg?branch=master)](https://travis-ci.org/sparanoid/slimpack)
+[![License](https://poser.pugx.org/automattic/jetpack/license.svg)](http://www.gnu.org/licenses/gpl-2.0.html)
+
 [**Maintainer Wanted**](https://github.com/sparanoid/slimpack/issues/1)
 
 Please view [plugin page at WordPress.org](https://wordpress.org/plugins/slimpack/) for more information.
