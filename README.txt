@@ -4,8 +4,8 @@ Contributors: Sparanoid, jjloomis
 Donate link: http://sparanoid.com/donate/
 Tags: Slimpack, WordPress.com, statistics, stats, views, tweets, twitter, widget, gravatar, hovercards, profile, equations, latex, math, maths, youtube, shortcode, archives, audio, blip, bliptv, dailymotion, digg, flickr, googlevideo, google, googlemaps, kyte, kytetv, livevideo, redlasso, rockyou, rss, scribd, slide, slideshare, soundcloud, vimeo, shortlinks, wp.me, subscriptions, notifications, notes, json, api, rest, mosaic, gallery, slideshow, videopress, monitor, search, omnisearch, sso, jet pack
 Requires at least: 4.1.1
-Tested up to: 4.3
-Stable tag: 1.0.7
+Tested up to: 4.4
+Stable tag: 1.0.8
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -155,6 +155,9 @@ No. It's not compatible with the original Jetpack. You can't activate Jetpack an
 
 == Changelog ==
 
+= 1.0.8 =
+* Fix Test up to tag
+
 = 1.0.7 =
 * Update to Jetpack core 3.8.0, updater: JJ Loomis (@jjloomis)
 
@@ -191,6 +194,9 @@ No. It's not compatible with the original Jetpack. You can't activate Jetpack an
 * First release
 
 == Upgrade Notice ==
+
+= 1.0.8 =
+* Fix Test up to tag
 
 = 1.0.7 =
 * Update to Jetpack core 3.8.0, updater: JJ Loomis (@jjloomis)
