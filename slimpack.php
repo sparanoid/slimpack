@@ -303,7 +303,7 @@ function slimpack_conditions() {
 	}
 
 	if (isset($tmp['jp_latex'])) {
-		if($tmp['jp_infinite_scroll']=='1'){
+		if($tmp['jp_latex']=='1'){
 			require_once( JETPACK__PLUGIN_DIR . 'modules/latex.php' );
 		}
 	}
