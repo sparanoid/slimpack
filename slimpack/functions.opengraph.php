@@ -347,6 +347,13 @@ function jetpack_og_get_image( $width = 200, $height = 200, $max_images = 4 ) { 
 	// Finally fall back, blank image
 	// SLIMPACK: Use built-in blank placeholder.
 	if ( empty( $image ) ) {
+		/**
+		 * Filter the default Open Graph Image tag, used when no Image can be found in a post.
+		 *
+		 * @since 3.0.0
+		 *
+		 * @param string $str Default Image URL.
+		 */
 		$image['src'] = apply_filters( 'jetpack_open_graph_image_default', plugins_url( '_inc/blank.jpg', __FILE__ ) );
 	}
 
