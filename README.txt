@@ -16,6 +16,8 @@ Slimpack — Lightweight Jetpack. Super-fast performance without modules that re
 
 Slimpack — Lightweight Jetpack. Super-fast performance without modules that requires contracting WordPress.com.
 
+**NOTE**: This is NOT the official Jetpack plugin by WordPress team.
+
 It provides better performance than original Jetpack. All features that require a WordPress.com account or need contracting / syncing back to WordPress.com servers have been removed. You don't need to connect to WordPress.com to use this plugin. If your site got slow response time (TTFB) after activating the original Jetpack, you should definitely try out this plugin.
 
 More information please visit my [site](http://sparanoid.com/work/slimpack/).
